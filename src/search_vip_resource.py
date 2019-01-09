@@ -114,6 +114,8 @@ def search_all_vip_chapter():
             with open(file_location + "errorTraverseBook.txt", 'a', encoding='utf-8') as error_traverse_book_file:
                 error_traverse_book_file.write(str(traverse_one_book_result.get()) + "\n")
             LOGGER.error("遍历结果不正确" + str(traverse_one_book_result.get()))
+        else:
+            LOGGER.info("图书:" + traverse_one_book_result.get()[4] + "付费章节搜索成功")
     pool.close()
     pool.join()
     LOGGER.info("\n\n全部需要删除URL查找成功")
