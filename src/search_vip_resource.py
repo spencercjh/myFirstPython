@@ -49,7 +49,8 @@ def traverse_one_book(book_id_inner):
     for chapter in one_book_all_chapters:
         zh_source_url = chapter['zhSourceURL']
         chapter_id = chapter['id']
-        LOGGER.info("开始遍历图书" + book_id_inner + "的章节" + chapter_id)
+        chapter_name = chapter['name']
+        LOGGER.info("开始遍历图书" + book_id_inner + "的章节" + chapter_id + "章节名:" + chapter_name)
         # url判空
         if zh_source_url is None or len(zh_source_url) == 0:
             continue
