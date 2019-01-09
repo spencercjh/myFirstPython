@@ -59,3 +59,7 @@ class TestSoup(unittest.TestCase):
     def test_url_sub(self):
         url = "https://test-api.lemonovel.com:443/v1/books/26a5c9ce-f6ae-492c-b1c6-754207738409/chapters/7261c458-d6e1-4048-813f-ba70464f0141\n"
         print((url[:-1]))
+        url = url.replace("https://test-api.lemonovel.com:443", "http://192.168.0.135")
+        print(url)
+        url = "api.lemonovel.com/v1/books/34f8f3b6-cc52-4245-929e-4a118c1e1772/chapters/"
+        print(url[url.find("books/") + 6:url.find("/chapters/")])

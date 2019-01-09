@@ -18,7 +18,6 @@ LOGGER = logging.getLogger("search_vip")
 def save_one_chapter_source(book_id_inner, chapter_id):
     LOGGER.info("进程  %s  存储删除URL：id为" % os.getpid() + book_id_inner + "的id为" + chapter_id + "章节")
     url = str(
-        "https://" +
         server_host + get_one_book_all_chapters_url_front + book_id_inner + get_one_book_all_chapters_url_end +
         chapter_id)
     # save_delete_url_list.append(url)
