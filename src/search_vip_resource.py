@@ -82,6 +82,7 @@ def remove_file():
         os.remove(file_location + 'saveChapterId.txt')
         os.remove(file_location + "saveErrorChapter.txt")
         os.remove(file_location + "saveErrorBook.txt")
+        os.remove(file_location + "errorTraverseBook.txt")
     except Exception as e:
         LOGGER.debug(e)
 
