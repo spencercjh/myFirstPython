@@ -39,8 +39,7 @@ def traverse_one_book(book_id_inner):
         LOGGER.error("图书:" + book_id_inner + "章节遍历出错")
         with open(file_location + "saveErrorBook.txt", 'a', encoding="utf-8") as save_error_book_id_file:
             save_error_book_id_file.write(
-                server_host + get_one_book_all_chapters_url_front + book_id_inner + get_one_book_all_chapters_url_end +
-                "\n")
+                server_host + get_one_book_all_chapters_url_front + book_id_inner + get_one_book_all_chapters_url_end + "\n")
     one_book_all_chapters_json_result = json.loads(one_book_all_chapters_result)
     one_book_all_chapters = one_book_all_chapters_json_result['data']
     previous = False
@@ -108,7 +107,12 @@ def search_all_vip_chapter():
     # 遍历所有的图书id，通过每本书的id去获取该书所有章节
     for book_id in book_id_list:
         # 遍历某一本书的全部章节
-        pool.apply_async(traverse_one_book, args=(book_id,))
+        try:
+            traverse_one_book_result = pool.apply_async(traverse_one_book, args=(book_id,))
+            if not traverse_one_book_result.get():
+                raise RuntimeError("遍历结果不正确")
+        except Exception as e:
+            LOGGER.error(e)
     pool.close()
     pool.join()
     LOGGER.info("\n\n全部需要删除URL查找成功")

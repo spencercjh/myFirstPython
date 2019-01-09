@@ -17,9 +17,11 @@ def re_search_book():
         for url in save_error_book_file:
             url = url[:-1]
             try:
-                pool.apply_async(traverse_one_book, args=(url[url.find("books/") + 6:url.find("/chapters/")],))
+                traverse_one_book_result = pool.apply_async(traverse_one_book, args=(url[url.find("books/") + 6:url.find("/chapters/")],))
+                if not traverse_one_book_result.get():
+                    raise RuntimeError("遍历结果不正确")
             except Exception as e:
-                logging.error(e)
+                LOGGER.error(e)
                 # with open(file_location + "saveErrorBook.txt", 'a', encoding="utf-8") as save_error_book_id_file:
                 #     save_error_book_id_file.write(
                 #         server_host + get_one_book_all_chapters_url_front + book_id + get_one_book_all_chapters_url_end +
