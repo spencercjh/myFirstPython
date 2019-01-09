@@ -37,4 +37,4 @@ def use_soup(url):
 def delete_one_book_chapter_by_url(url):
     headers = {"token": admin_token}
     response = requests.request(method="DELETE", url=url, headers=headers)
-    return response.status_code == success_code
+    return response.status_code == success_code, str(response.content)

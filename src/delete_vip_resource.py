@@ -15,7 +15,12 @@ def delete_all_vip_chapters():
     with open(file_location + 'saveUrl.txt', 'r', encoding='utf-8') as save_url_file:
         for url in save_url_file:
             url = url[:-1]
-            delete_result = delete_one_book_chapter_by_url(url)
+            try:
+                delete_result, content = delete_one_book_chapter_by_url(url)
+                logging.info(content)
+            except Exception as e:
+                LOGGER.error(e)
+                delete_result = False
             if delete_result:
                 logging.info("请求成功" + url)
             else:
