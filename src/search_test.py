@@ -9,3 +9,7 @@ class TestSoup(unittest.TestCase):
         test_book_id = 'b60b5cb4-9bea-4944-8bc2-1b31ef5f15bd'
         remove_file()
         self.assertTrue(traverse_one_book(test_book_id))
+
+
+if __name__ == '__main__':
+    unittest.main()
