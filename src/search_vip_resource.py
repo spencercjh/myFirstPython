@@ -100,7 +100,6 @@ def search_all_vip_chapter():
         LOGGER.error("超时，解决网络问题后再起一次！")
     json_result = json.loads(all_books_http_result)
     all_books = json_result['data']
-    LOGGER.info(all_books)
     book_id_list = []
     # 遍历所有书，获取所有的图书id
     for book in all_books:
