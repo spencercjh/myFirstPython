@@ -20,4 +20,4 @@ domain_qidian = "qidian"
 domain_xxsy = "xxsy"
 admin_token = "d80f98afa67e107022d8ac48fae7f50e47ee5df4a92706027906c149a8943b81"
 success_code = 200
-count_process = 20
+count_process = 10
