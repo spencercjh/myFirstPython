@@ -18,14 +18,10 @@ def re_search_book():
             url = url[:-1]
             try:
                 traverse_one_book_result = pool.apply_async(traverse_one_book, args=(url[url.find("books/") + 6:url.find("/chapters/")],))
-                if not traverse_one_book_result.get():
-                    raise RuntimeError("遍历结果不正确")
+                if not traverse_one_book_result.get()[0]:
+                    raise RuntimeError("遍历结果不正确" + str(traverse_one_book_result.get()))
             except Exception as e:
                 LOGGER.error(e)
-                # with open(file_location + "saveErrorBook.txt", 'a', encoding="utf-8") as save_error_book_id_file:
-                #     save_error_book_id_file.write(
-                #         server_host + get_one_book_all_chapters_url_front + book_id + get_one_book_all_chapters_url_end +
-                #         "\n")
     pool.close()
     pool.join()
     save_chapter_id()

@@ -71,7 +71,8 @@ def traverse_one_book(book_id_inner):
                     server_host + get_one_book_all_chapters_url_front + book_id_inner +
                     get_one_book_all_chapters_url_end +
                     chapter_id + "\n")
-    return (delete_chapter_count + free_chapter_count) == len(one_book_all_chapters)
+    return (delete_chapter_count + free_chapter_count) == len(one_book_all_chapters), delete_chapter_count, free_chapter_count, len(
+        one_book_all_chapters), book_id_inner
 
 
 def remove_file():
@@ -107,12 +108,11 @@ def search_all_vip_chapter():
     # 遍历所有的图书id，通过每本书的id去获取该书所有章节
     for book_id in book_id_list:
         # 遍历某一本书的全部章节
-        try:
-            traverse_one_book_result = pool.apply_async(traverse_one_book, args=(book_id,))
-            if not traverse_one_book_result.get():
-                raise RuntimeError("遍历结果不正确")
-        except Exception as e:
-            LOGGER.error(e)
+        traverse_one_book_result = pool.apply_async(traverse_one_book, args=(book_id,))
+        if not traverse_one_book_result.get()[0]:
+            with open(file_location + "errorTraverseBook.txt", 'a', encoding='utf-8') as error_traverse_book_file:
+                error_traverse_book_file.write(str(traverse_one_book_result.get()) + "\n")
+            LOGGER.error("遍历结果不正确" + str(traverse_one_book_result.get()))
     pool.close()
     pool.join()
     LOGGER.info("\n\n全部需要删除URL查找成功")
