@@ -13,6 +13,8 @@ LOG_FORMAT = ('%(levelname) -10s %(asctime)s %(name) -30s %(funcName) '
               '-35s %(lineno) -5d: %(message)s')
 logging.basicConfig(level=logging.DEBUG, format=LOG_FORMAT)
 LOGGER = logging.getLogger("search_vip")
+handler = logging.FileHandler("../log/search_vip.log")
+LOGGER.addHandler(handler)
 
 
 def save_one_chapter_source(book_id_inner, chapter_id):
