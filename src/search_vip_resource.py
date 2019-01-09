@@ -76,11 +76,14 @@ def traverse_one_book(book_id_inner):
 
 
 def remove_file():
-    os.remove('../log/search_vip.log')
-    os.remove(file_location + 'saveUrl.txt')
-    os.remove(file_location + 'saveChapterId.txt')
-    os.remove(file_location + "saveErrorChapter.txt")
-    os.remove(file_location + "saveErrorBook.txt")
+    try:
+        os.remove('../log/search_vip.log')
+        os.remove(file_location + 'saveUrl.txt')
+        os.remove(file_location + 'saveChapterId.txt')
+        os.remove(file_location + "saveErrorChapter.txt")
+        os.remove(file_location + "saveErrorBook.txt")
+    except Exception as e:
+        LOGGER.debug(e)
 
 
 def search_all_vip_chapter():

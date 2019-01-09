@@ -63,3 +63,7 @@ class TestSoup(unittest.TestCase):
         print(url)
         url = "api.lemonovel.com/v1/books/34f8f3b6-cc52-4245-929e-4a118c1e1772/chapters/"
         print(url[url.find("books/") + 6:url.find("/chapters/")])
+
+
+if __name__ == '__main__':
+    unittest.main()
