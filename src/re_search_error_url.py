@@ -3,7 +3,7 @@ import time
 from multiprocessing.pool import Pool
 
 from const import file_location, count_process
-from search_vip_resource import traverse_one_book, saveChapterId
+from search_vip_resource import traverse_one_book, save_chapter_id
 
 LOG_FORMAT = ('%(levelname) -10s %(asctime)s %(name) -30s %(funcName) '
               '-35s %(lineno) -5d: %(message)s')
@@ -26,7 +26,7 @@ def re_search_book():
                 #         "\n")
     pool.close()
     pool.join()
-    saveChapterId()
+    save_chapter_id()
 
 
 if __name__ == '__main__':
