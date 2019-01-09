@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from const import server_host, get_all_books_url, get_one_book_all_chapters_url_front, \
-    get_one_book_all_chapters_url_end, admin_token, success_code
+    get_one_book_all_chapters_url_end, admin_token, success_code, sc_url
 
 
 def get_all_books():
@@ -38,3 +38,8 @@ def delete_one_book_chapter_by_url(url):
     headers = {"token": admin_token}
     response = requests.request(method="DELETE", url=url, headers=headers)
     return response.status_code == success_code, str(response.content)
+
+
+def sc_ftqq_send_message(text, desp):
+    url = sc_url + "?text=%s" % text + "&desp=%s" % desp
+    return requests.request(method="GET", url=url)

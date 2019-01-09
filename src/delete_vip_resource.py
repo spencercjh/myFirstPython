@@ -2,7 +2,7 @@ import logging
 import time
 
 from const import file_location
-from http_request import delete_one_book_chapter_by_url
+from http_request import delete_one_book_chapter_by_url, sc_ftqq_send_message
 
 LOG_FORMAT = ('%(levelname) -10s %(asctime)s %(name) -30s %(funcName) '
               '-35s %(lineno) -5d: %(message)s')
@@ -35,3 +35,4 @@ if __name__ == '__main__':
     delete_all_vip_chapters()
     seconds, minutes, hours = int(time.time() - start_time), 0, 0
     LOGGER.info("\n  Complete time cost {:>02d}:{:>02d}:{:>02d}".format(hours, minutes, seconds))
+    sc_ftqq_send_message("删除请求执行完成", "耗时" + str(seconds) + "秒")

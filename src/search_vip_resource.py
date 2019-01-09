@@ -6,7 +6,7 @@ from multiprocessing import Pool
 
 from const import get_one_book_all_chapters_url_front, server_host, get_one_book_all_chapters_url_end, count_process, \
     file_location
-from http_request import get_one_book_all_chapters, get_all_books
+from http_request import get_one_book_all_chapters, get_all_books, sc_ftqq_send_message
 from judge_free import judge_free
 
 LOG_FORMAT = ('%(levelname) -10s %(asctime)s %(name) -30s %(funcName) '
@@ -123,6 +123,7 @@ def search_all_vip_chapter():
     LOGGER.info("\n\n存储chapterId成功")
     seconds, minutes, hours = int(time.time() - start_time), 0, 0
     LOGGER.info("\n  Complete time cost {:>02d}:{:>02d}:{:>02d}".format(hours, minutes, seconds))
+    sc_ftqq_send_message("搜索收费章节完成", "耗时" + str(seconds) + "秒")
 
 
 def save_chapter_id():

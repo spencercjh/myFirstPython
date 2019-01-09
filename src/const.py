@@ -21,3 +21,6 @@ domain_xxsy = "xxsy"
 admin_token = "d80f98afa67e107022d8ac48fae7f50e47ee5df4a92706027906c149a8943b81"
 success_code = 200
 count_process = 10
+
+sc_key = 'SCU37675T0c48d22fd4519a967d9f95767fe450f05c1388b9ee394'
+sc_url = 'https://sc.ftqq.com/%s.send' % sc_key

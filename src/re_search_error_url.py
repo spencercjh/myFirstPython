@@ -3,6 +3,7 @@ import time
 from multiprocessing.pool import Pool
 
 from const import file_location, count_process
+from http_request import sc_ftqq_send_message
 from search_vip_resource import traverse_one_book, save_chapter_id
 
 LOG_FORMAT = ('%(levelname) -10s %(asctime)s %(name) -30s %(funcName) '
@@ -32,3 +33,4 @@ if __name__ == '__main__':
     re_search_book()
     seconds, minutes, hours = int(time.time() - start_time), 0, 0
     LOGGER.info("\n  Complete time cost {:>02d}:{:>02d}:{:>02d}".format(hours, minutes, seconds))
+    sc_ftqq_send_message("再请求成功", "耗时" + str(seconds) + "秒")
