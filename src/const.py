@@ -1,3 +1,5 @@
+import requests
+
 mode = 1  # 1表示生产 0表示测试
 env = 0  # 1表示内网服务器 0表示我的电脑
 if mode == 0:
@@ -19,7 +21,7 @@ domain_zhuishushenqi = "zhuishushenqi"
 domain_qidian = "qidian"
 domain_xxsy = "xxsy"
 admin_token = "d80f98afa67e107022d8ac48fae7f50e47ee5df4a92706027906c149a8943b81"
-success_code = 200
+success_code = requests.codes.ok
 count_process = 10
 
 sc_key = 'SCU37675T0c48d22fd4519a967d9f95767fe450f05c1388b9ee394'
