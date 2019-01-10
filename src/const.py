@@ -20,7 +20,7 @@ get_one_book_all_chapters_url_end = "/chapters/"
 domain_zhuishushenqi = "zhuishushenqi"
 domain_qidian = "qidian"
 domain_xxsy = "xxsy"
-admin_token = "d80f98afa67e107022d8ac48fae7f50e47ee5df4a92706027906c149a8943b81"
+admin_token = "9afaf213a5e95ea7973cbe23b155b76eb6fec20e7bde9a75f5890de773ed045a"
 success_code = requests.codes.ok
 count_process = 10
 
