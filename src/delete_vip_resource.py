@@ -8,6 +8,15 @@ LOG_FORMAT = ('%(levelname) -10s %(asctime)s %(name) -30s %(funcName) '
               '-35s %(lineno) -5d: %(message)s')
 logging.basicConfig(level=logging.DEBUG, format=LOG_FORMAT)
 LOGGER = logging.getLogger("delete_vip")
+handler = logging.FileHandler("../log/delete_vip.log")
+LOGGER.addHandler(handler)
+
+
+# 替换saveUrl.txt中的url主机
+def replace_url_front(url):
+    if isinstance(url, str):
+        new_url = url.replace("api.lemonovel.com", "http://192.168.0.136")
+        return new_url
 
 
 def delete_all_vip_chapters():
@@ -15,6 +24,7 @@ def delete_all_vip_chapters():
     with open(file_location + 'saveUrl.txt', 'r', encoding='utf-8') as save_url_file:
         for url in save_url_file:
             url = url[:-1]
+            url = replace_url_front(url)
             try:
                 delete_result, content = delete_one_book_chapter_by_url(url)
                 logging.info(content)
