@@ -36,8 +36,9 @@ def delete_all_vip_chapters():
             else:
                 logging.error("请求失败" + url)
                 error_url_list.append(url)
-    with open(file_location + 'deleteErrorUrl.txt', 'a', encoding='utf-8') as delete_error_url_file:
-        delete_error_url_file.write("\n".join(error_url_list))
+    if error_url_list:
+        with open(file_location + 'deleteErrorUrl.txt', 'a', encoding='utf-8') as delete_error_url_file:
+            delete_error_url_file.write("\n".join(error_url_list))
 
 
 if __name__ == '__main__':
