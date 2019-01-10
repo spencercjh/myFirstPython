@@ -26,6 +26,8 @@ search_vip_resource.py  #搜索所有图书的所有收费章节
 
 soup_test.py    #对判断章节页面是否有收费元素的judge_free函数的单元测试
 
+search_user_chapter.py  #查找用户自主翻译信息中有收费章节的信息id
+
 ## 需求
 
 我们线上系统之前上线了很多书籍的章节数据,因为抓取的是正版来源,
@@ -65,4 +67,8 @@ nohup python3 search_vip_resource.py &
 nohup python3 delete_vip_resource.py &
 ```
 
-搜索全部收费章节全程耗时45分钟左右
+i7-7500U双核搜索全部收费章节全程耗时45分钟左右
+
+一核的服务器全程耗时5个小时左右
+
+使用了一款[免费开源的服务器报警接口](http://sc.ftqq.com/3.version)，服务完成/致命错误后会向我的微信账号报警
